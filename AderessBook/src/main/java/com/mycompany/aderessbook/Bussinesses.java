@@ -1,8 +1,10 @@
 
 package com.mycompany.aderessbook;
 
-public class Bussinesses extends Data{
+import java.util.ArrayList;
 
+public class Bussinesses extends Data implements Compare {
+    
     private String Title;
     private String Genre;
     private String Wibsite;
@@ -43,7 +45,12 @@ public class Bussinesses extends Data{
     public void setContactPerson(Person ContactPerson) {
          this.ContactPerson = ContactPerson;
     }
-   
+    
+    @Override
+    public boolean compareBy (String title) {
+        return this.Title.toLowerCase().contains(title.toLowerCase()) ;
+    }
+    
     @Override
     public String getInfo(){
 

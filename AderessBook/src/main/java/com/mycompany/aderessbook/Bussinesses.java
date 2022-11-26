@@ -1,7 +1,6 @@
 
 package com.mycompany.aderessbook;
 
-import java.util.ArrayList;
 
 public class Bussinesses extends Data implements Compare {
     
@@ -11,6 +10,17 @@ public class Bussinesses extends Data implements Compare {
     private Person ContactPerson;
     
     ///getter
+   
+    public Bussinesses( ) {
+    }
+
+    public Bussinesses(String Title, String Genre, String Wibsite, Person ContactPerson) {
+        this.Title = Title;
+        this.Genre = Genre;
+        this.Wibsite = Wibsite;
+        this.ContactPerson = ContactPerson;
+    }
+    
 
     public String getTitle() {
         return Title;

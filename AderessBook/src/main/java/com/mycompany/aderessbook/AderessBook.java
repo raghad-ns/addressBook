@@ -53,15 +53,45 @@ public class AderessBook {
                         System.out.println("Enter person's Telephone-Number");
                         personInfo = input.next();
                         tempPerson.setTelNum(personInfo);
-                        System.out.println("Enter person's Birth-Date");
-                        int birthDate = input.nextInt();
-                        BirthDate bd = new BirthDate(birthDate , birthDate , birthDate);
+                        System.out.println("Enter information for his birthdate");
+                        System.out.println("Enter  day");
+                        int day = input.nextInt();
+                        System.out.println("Enter month");
+                        int month = input.nextInt();
+                        System.out.println("Enter year");
+                        int year = input.nextInt();
+                        BirthDate bd = new BirthDate(day, month, year);
                         tempPerson.setBirthDate(bd);
                         persons.add(tempPerson);
-                        trigger = 0;
+
                     } else {
-                        System.out.println("Enter bussiness's data");
-                        Bussinesses tempBussenis = new Bussinesses();
+                        System.out.println("Let's go to Enter bussiness's data");
+                        System.out.println(" Enter bussiness's Title");
+                        String Title = input.next();
+                        System.out.println(" Enter bussiness's Genre");
+                        String Genre = input.next();
+                        System.out.println(" Enter bussiness's Wibsite ");
+                        String Wibsite = input.next();
+
+                        System.out.println("Let's go to Enter person's data");
+                        System.out.println(" Enter bussiness's firstName");
+                        String firstName = input.next();
+                        System.out.println(" Enter bussiness's lastName");
+                        String lastName = input.next();
+
+                        System.out.println("Enter information for his birthdate");
+                        System.out.println("Enter  day");
+                        int day = input.nextInt();
+                        System.out.println("Enter month");
+                        int month = input.nextInt();
+                        System.out.println("Enter year");
+                        int year = input.nextInt();
+                        BirthDate bd = new BirthDate(day, month, year);
+
+                        Person tempPerson = new Person(firstName, lastName, bd);
+
+                        Bussinesses tempBussenis = new Bussinesses(Title, Genre, Wibsite, tempPerson);
+                        bussinesses.add(tempBussenis);
                     }
                     break;
                 }

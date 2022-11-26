@@ -18,7 +18,9 @@ public class BirthDate {
         this .year = year;
 
     }
-
+    public BirthDate() {
+        
+    }
     //// getters
 
     public int getDay() {

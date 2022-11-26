@@ -30,9 +30,20 @@ public class AderessBook {
                     System.out.println("Do you want to add a (1. person or 2.bussiness)");
                     int type = input.nextInt();
                     if (type == 1) {
+                        String personInfo = input.next();
+                        int birthDate = input.nextInt();
                         System.out.println("Enter person's data");
                         Person tempPerson = new Person();
-
+                        BirthDate bd = new BirthDate(birthDate , birthDate , birthDate);
+                        tempPerson.setFirst(personInfo);
+                        tempPerson.setLast(personInfo);
+                        tempPerson.setBirthDate(bd);
+                        tempPerson.setCity(personInfo);
+                        tempPerson.setCountry(personInfo);
+                        tempPerson.setEmail(personInfo);
+                        tempPerson.setPostal(personInfo);
+                        tempPerson.setTelNum(personInfo);
+                        persons.add(tempPerson);
                     } else {
                         System.out.println("Enter bussiness's data");
                         Bussinesses tempBussenis = new Bussinesses();

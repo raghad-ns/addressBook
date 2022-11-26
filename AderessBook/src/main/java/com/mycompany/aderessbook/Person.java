@@ -12,8 +12,19 @@ public class Person extends Data implements Compare {
     private String firstName;
     private String lastName ;
     private BirthDate bd;
+
+    public Person() {
+    }
+ 
+    public Person(String firstName, String lastName, BirthDate bd) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bd = bd;
+    }
+    
     
     //getter
+    
     
     public String getFirst() {
         return firstName;

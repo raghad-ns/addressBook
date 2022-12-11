@@ -88,10 +88,19 @@ public class Dataadressbook extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Enter your Full information about Person :");
 
+        lastNameTextField.setEditable(false);
+
         LlastName1.setText("Last name : ");
+
+        firstNameTextField.setEditable(false);
 
         birthdayl.setText("Birthday:");
 
+        dayTextField.setEditable(false);
+
+        monthTextField.setEditable(false);
+
+        yearTextField.setEditable(false);
         yearTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yearTextFieldActionPerformed(evt);
@@ -124,6 +133,7 @@ public class Dataadressbook extends javax.swing.JFrame {
 
         lpostal.setText("Postal Code : ");
 
+        postalCodeTexField.setEditable(false);
         postalCodeTexField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 postalCodeTexFieldActionPerformed(evt);
@@ -132,15 +142,25 @@ public class Dataadressbook extends javax.swing.JFrame {
 
         lemail.setText("Email :");
 
+        generTextField.setEditable(false);
+
         lTelephone.setText("Telephone-Number");
+
+        telephoneNumberTExtField.setEditable(false);
 
         jButton1.setText("Add");
 
+        websiteTextField.setEditable(false);
+
         jLabel3.setText("Title :");
+
+        titleTextField.setEditable(false);
 
         jLabel4.setText("Gener :");
 
         jLabel5.setText("Website :");
+
+        emailTextField.setEditable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Adress Type : "));
 

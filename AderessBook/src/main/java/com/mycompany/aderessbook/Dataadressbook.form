@@ -307,6 +307,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="lastNameTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="LlastName1">
               <Properties>
@@ -314,6 +317,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="firstNameTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="birthdayl">
               <Properties>
@@ -321,10 +327,19 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="dayTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="monthTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="yearTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="yearTextFieldActionPerformed"/>
               </Events>
@@ -413,6 +428,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="postalCodeTexField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postalCodeTexFieldActionPerformed"/>
               </Events>
@@ -423,6 +441,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="generTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lTelephone">
               <Properties>
@@ -430,6 +451,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="telephoneNumberTExtField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
@@ -437,6 +461,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="websiteTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -444,6 +471,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="titleTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -456,6 +486,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="emailTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel1">
               <Properties>

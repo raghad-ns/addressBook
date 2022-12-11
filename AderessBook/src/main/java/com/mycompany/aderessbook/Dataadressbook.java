@@ -149,6 +149,11 @@ public class Dataadressbook extends javax.swing.JFrame {
         telephoneNumberTExtField.setEditable(false);
 
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         websiteTextField.setEditable(false);
 
@@ -338,7 +343,7 @@ public class Dataadressbook extends javax.swing.JFrame {
                             .addComponent(websiteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93)
+                .addGap(81, 81, 81)
                 .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(countryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lcountry))
@@ -361,7 +366,7 @@ public class Dataadressbook extends javax.swing.JFrame {
                         .addGap(82, 82, 82)
                         .addComponent(jButton1))
                     .addComponent(telephoneNumberTExtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Person", person);
@@ -428,6 +433,71 @@ public class Dataadressbook extends javax.swing.JFrame {
             telephoneNumberTExtField.setEditable(true);
         }
     }//GEN-LAST:event_businessRadioButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (personRadioButton.isSelected()) {
+            String firstName = firstNameTextField.getText() ;
+            String lastName = lastNameTextField.getText() ;
+            int day = Integer.parseInt(dayTextField.getText()) ;
+            int month = Integer.parseInt(monthTextField.getText()) ;
+            int year = Integer.parseInt(yearTextField.getText()) ;
+            String country = countryComboBox.getSelectedItem().toString() ;
+            String city = cityComboBox.getSelectedItem().toString() ;
+            String postalCode = postalCodeTexField.getText();
+            String email = emailTextField.getText();
+            String telephone = telephoneNumberTExtField.getText();
+            BirthDate bd = new BirthDate(day, month, year);
+            Person person = new Person(firstName, lastName, bd);
+            adresses.add(person);
+            firstNameTextField.setText("");
+            lastNameTextField.setText("");
+            dayTextField.setText("");
+            monthTextField.setText("");
+            yearTextField.setText("");
+            countryComboBox.setSelectedIndex(0);
+            cityComboBox.setSelectedIndex(0);
+            postalCodeTexField.setText("");
+            emailTextField.setText("");
+            telephoneNumberTExtField.setText("");    
+           
+        }
+        else{
+            String country = countryComboBox.getSelectedItem().toString() ;
+            String city = cityComboBox.getSelectedItem().toString() ;
+            String postalCode = postalCodeTexField.getText();
+            String email = emailTextField.getText();
+            String telephone = telephoneNumberTExtField.getText();
+            String title = titleTextField.getText();
+            String gener = generTextField.getText();
+            String wibsite= websiteTextField.getText();
+            String firstName = firstNameTextField.getText() ;
+            String lastName = lastNameTextField.getText() ;
+            int day = Integer.parseInt(dayTextField.getText()) ;
+            int month = Integer.parseInt(monthTextField.getText()) ;
+            int year = Integer.parseInt(yearTextField.getText()) ;
+             BirthDate bd = new BirthDate(day, month, year);
+            Person person = new Person(firstName, lastName, bd);
+            Bussinesses bussinesses = new Bussinesses(title, gener, wibsite, person);
+            adresses.add(bussinesses);
+             firstNameTextField.setText("");
+            lastNameTextField.setText("");
+            dayTextField.setText("");
+            monthTextField.setText("");
+            yearTextField.setText("");
+            countryComboBox.setSelectedIndex(0);
+            cityComboBox.setSelectedIndex(0);
+            postalCodeTexField.setText("");
+            emailTextField.setText("");
+            telephoneNumberTExtField.setText("");  
+            titleTextField.setText("");
+            generTextField.setText("");
+            websiteTextField.setText("");
+            
+            
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

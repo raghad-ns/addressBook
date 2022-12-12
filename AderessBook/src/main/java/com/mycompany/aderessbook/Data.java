@@ -12,7 +12,7 @@ public class Data {
     // intialize
     }
     Data (String countrt , String city , String email , String postsal , String telNum) {
-        this.country = countrt ;
+        this.country = country ;
         this.city = city ;
         this.email = email ;
         this.postal = postsal ;

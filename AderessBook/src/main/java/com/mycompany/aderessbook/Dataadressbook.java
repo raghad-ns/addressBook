@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.aderessbook;
+
 import java.util.ArrayList;
 
 /**
@@ -10,15 +11,18 @@ import java.util.ArrayList;
  * @author smart
  */
 public class Dataadressbook extends javax.swing.JFrame {
-    ArrayList <Data> adresses = new ArrayList <>() ;
-    /**
-     * Creates new form Dataadressbook
-     */
+
+    ArrayList<Data> adresses = new ArrayList<>();
+
+//    /**
+//     * Creates new form Dataadressbook
+//     */
     public Dataadressbook() {
         initComponents();
     }
-    public void display () {
-        
+
+    public void display() {
+
     }
 
     /**
@@ -31,8 +35,8 @@ public class Dataadressbook extends javax.swing.JFrame {
     private void initComponents() {
 
         adressButtonGroup = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        search = new javax.swing.JPanel();
         person = new javax.swing.JPanel();
         LfirstName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -67,21 +71,14 @@ public class Dataadressbook extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         personRadioButton = new javax.swing.JRadioButton();
         businessRadioButton = new javax.swing.JRadioButton();
+        search = new javax.swing.JPanel();
+        searchAbout = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        searchRes = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout searchLayout = new javax.swing.GroupLayout(search);
-        search.setLayout(searchLayout);
-        searchLayout.setHorizontalGroup(
-            searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 818, Short.MAX_VALUE)
-        );
-        searchLayout.setVerticalGroup(
-            searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 778, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("Search", search);
 
         LfirstName.setText("First name : ");
 
@@ -89,18 +86,27 @@ public class Dataadressbook extends javax.swing.JFrame {
         jLabel1.setText("Enter your Full information about Person :");
 
         lastNameTextField.setEditable(false);
+        lastNameTextField.setEnabled(false);
 
         LlastName1.setText("Last name : ");
 
-        firstNameTextField.setEditable(false);
+        firstNameTextField.setEnabled(false);
+        firstNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstNameTextFieldActionPerformed(evt);
+            }
+        });
 
         birthdayl.setText("Birthday:");
 
         dayTextField.setEditable(false);
+        dayTextField.setEnabled(false);
 
         monthTextField.setEditable(false);
+        monthTextField.setEnabled(false);
 
         yearTextField.setEditable(false);
+        yearTextField.setEnabled(false);
         yearTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yearTextFieldActionPerformed(evt);
@@ -116,6 +122,7 @@ public class Dataadressbook extends javax.swing.JFrame {
         lcountry.setText("Country :");
 
         countryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "country", "Palestine", "Jordan", "Iraq", "Kuwait", "Saudi Arabia", "Egypt", " ", " " }));
+        countryComboBox.setEnabled(false);
         countryComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 countryComboBoxItemStateChanged(evt);
@@ -125,6 +132,7 @@ public class Dataadressbook extends javax.swing.JFrame {
         lcity.setText("City :");
 
         cityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "City", "Hebron", "Ramallah", "Jericho", "Gaza", "Nablus", "Cairo", "Alexandria", "Luxor", "Hawally", "Fintas", "Al Jahra", "Al Farwaniyah", " " }));
+        cityComboBox.setEnabled(false);
         cityComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cityComboBoxItemStateChanged(evt);
@@ -134,6 +142,7 @@ public class Dataadressbook extends javax.swing.JFrame {
         lpostal.setText("Postal Code : ");
 
         postalCodeTexField.setEditable(false);
+        postalCodeTexField.setEnabled(false);
         postalCodeTexField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 postalCodeTexFieldActionPerformed(evt);
@@ -143,10 +152,12 @@ public class Dataadressbook extends javax.swing.JFrame {
         lemail.setText("Email :");
 
         generTextField.setEditable(false);
+        generTextField.setEnabled(false);
 
         lTelephone.setText("Telephone-Number");
 
         telephoneNumberTExtField.setEditable(false);
+        telephoneNumberTExtField.setEnabled(false);
 
         jButton1.setText("Add");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -156,19 +167,23 @@ public class Dataadressbook extends javax.swing.JFrame {
         });
 
         websiteTextField.setEditable(false);
+        websiteTextField.setEnabled(false);
 
         jLabel3.setText("Title :");
 
         titleTextField.setEditable(false);
+        titleTextField.setEnabled(false);
 
         jLabel4.setText("Gener :");
 
         jLabel5.setText("Website :");
 
         emailTextField.setEditable(false);
+        emailTextField.setEnabled(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Adress Type : "));
 
+        adressButtonGroup.add(personRadioButton);
         personRadioButton.setText("Person");
         personRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,15 +243,9 @@ public class Dataadressbook extends javax.swing.JFrame {
                             .addComponent(birthdayl, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(personLayout.createSequentialGroup()
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(206, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, personLayout.createSequentialGroup()
-                                    .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(personLayout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(206, Short.MAX_VALUE))
                             .addGroup(personLayout.createSequentialGroup()
                                 .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(personLayout.createSequentialGroup()
@@ -271,10 +280,15 @@ public class Dataadressbook extends javax.swing.JFrame {
                                         .addComponent(generTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(124, 124, 124))))
                             .addGroup(personLayout.createSequentialGroup()
-                                .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(personLayout.createSequentialGroup()
+                                        .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(116, 116, 116))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, personLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSeparator2)
@@ -366,10 +380,51 @@ public class Dataadressbook extends javax.swing.JFrame {
                         .addGap(82, 82, 82)
                         .addComponent(jButton1))
                     .addComponent(telephoneNumberTExtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Person", person);
+        jTabbedPane2.addTab("ِAdress Form", person);
+
+        searchAbout.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchAboutKeyPressed(evt);
+            }
+        });
+
+        jLabel7.setText("Search here :");
+
+        searchRes.setBorder(javax.swing.BorderFactory.createTitledBorder("Search results"));
+        searchRes.setEnabled(false);
+        jScrollPane1.setViewportView(searchRes);
+
+        jScrollPane2.setViewportView(jScrollPane1);
+
+        javax.swing.GroupLayout searchLayout = new javax.swing.GroupLayout(search);
+        search.setLayout(searchLayout);
+        searchLayout.setHorizontalGroup(
+            searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                    .addComponent(searchAbout))
+                .addContainerGap(304, Short.MAX_VALUE))
+        );
+        searchLayout.setVerticalGroup(
+            searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(searchAbout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(370, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Search", search);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -381,7 +436,10 @@ public class Dataadressbook extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
         );
 
         pack();
@@ -405,50 +463,58 @@ public class Dataadressbook extends javax.swing.JFrame {
 
     private void personRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personRadioButtonActionPerformed
         // TODO add your handling code here:
-        if (personRadioButton.isSelected()) {
-            firstNameTextField.setEditable(true);
-            lastNameTextField.setEditable(true);
-            dayTextField.setEditable(true);
-            monthTextField.setEditable(true);
-            yearTextField.setEditable(true);
-            countryComboBox.setEditable(true);
-            cityComboBox.setEditable(true);
-            emailTextField.setEditable(true);
-            postalCodeTexField.setEditable(true);
-            telephoneNumberTExtField.setEditable(true);
-        }
-        
+
+        firstNameTextField.setEnabled(personRadioButton.isSelected());
+        lastNameTextField.setEnabled(personRadioButton.isSelected());
+        dayTextField.setEnabled(personRadioButton.isSelected());
+        monthTextField.setEnabled(personRadioButton.isSelected());
+        yearTextField.setEnabled(personRadioButton.isSelected());
+        countryComboBox.setEnabled(personRadioButton.isSelected());
+        cityComboBox.setEnabled(personRadioButton.isSelected());
+        emailTextField.setEnabled(personRadioButton.isSelected());
+        postalCodeTexField.setEnabled(personRadioButton.isSelected());
+        telephoneNumberTExtField.setEnabled(personRadioButton.isSelected());
+        titleTextField.setEnabled(!personRadioButton.isSelected());
+        generTextField.setEnabled(!personRadioButton.isSelected());
+        websiteTextField.setEnabled(!personRadioButton.isSelected());
+
+
     }//GEN-LAST:event_personRadioButtonActionPerformed
 
     private void businessRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_businessRadioButtonActionPerformed
         // TODO add your handling code here:
-        if (businessRadioButton.isSelected()) {
-            titleTextField.setEditable(true);
-            generTextField.setEditable(true);
-            websiteTextField.setEditable(true);
-            countryComboBox.setEditable(true);
-            cityComboBox.setEditable(true);
-            emailTextField.setEditable(true);
-            postalCodeTexField.setEditable(true);
-            telephoneNumberTExtField.setEditable(true);
-        }
+
+        titleTextField.setEnabled(businessRadioButton.isSelected());
+        generTextField.setEnabled(businessRadioButton.isSelected());
+        websiteTextField.setEnabled(businessRadioButton.isSelected());
+        countryComboBox.setEnabled(businessRadioButton.isSelected());
+        cityComboBox.setEnabled(businessRadioButton.isSelected());
+        emailTextField.setEnabled(businessRadioButton.isSelected());
+        postalCodeTexField.setEnabled(businessRadioButton.isSelected());
+        telephoneNumberTExtField.setEnabled(businessRadioButton.isSelected());
+        firstNameTextField.setEnabled(!businessRadioButton.isSelected());
+        lastNameTextField.setEnabled(!businessRadioButton.isSelected());
+        dayTextField.setEnabled(!businessRadioButton.isSelected());
+        monthTextField.setEnabled(!businessRadioButton.isSelected());
+        yearTextField.setEnabled(!businessRadioButton.isSelected());
+
     }//GEN-LAST:event_businessRadioButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (personRadioButton.isSelected()) {
-            String firstName = firstNameTextField.getText() ;
-            String lastName = lastNameTextField.getText() ;
-            int day = Integer.parseInt(dayTextField.getText()) ;
-            int month = Integer.parseInt(monthTextField.getText()) ;
-            int year = Integer.parseInt(yearTextField.getText()) ;
-            String country = countryComboBox.getSelectedItem().toString() ;
-            String city = cityComboBox.getSelectedItem().toString() ;
+            String firstName = firstNameTextField.getText();
+            String lastName = lastNameTextField.getText();
+            int day = Integer.parseInt(dayTextField.getText());
+            int month = Integer.parseInt(monthTextField.getText());
+            int year = Integer.parseInt(yearTextField.getText());
+            String country = countryComboBox.getSelectedItem().toString();
+            String city = cityComboBox.getSelectedItem().toString();
             String postalCode = postalCodeTexField.getText();
             String email = emailTextField.getText();
             String telephone = telephoneNumberTExtField.getText();
             BirthDate bd = new BirthDate(day, month, year);
-            Person person = new Person(firstName, lastName, bd);
+            Person person = new Person(firstName, lastName, bd, country, city, email, postalCode, telephone);
             adresses.add(person);
             firstNameTextField.setText("");
             lastNameTextField.setText("");
@@ -459,28 +525,27 @@ public class Dataadressbook extends javax.swing.JFrame {
             cityComboBox.setSelectedIndex(0);
             postalCodeTexField.setText("");
             emailTextField.setText("");
-            telephoneNumberTExtField.setText("");    
-           
-        }
-        else{
-            String country = countryComboBox.getSelectedItem().toString() ;
-            String city = cityComboBox.getSelectedItem().toString() ;
+            telephoneNumberTExtField.setText("");
+
+        } else {
+            String country = countryComboBox.getSelectedItem().toString();
+            String city = cityComboBox.getSelectedItem().toString();
             String postalCode = postalCodeTexField.getText();
             String email = emailTextField.getText();
             String telephone = telephoneNumberTExtField.getText();
             String title = titleTextField.getText();
             String gener = generTextField.getText();
-            String wibsite= websiteTextField.getText();
-            String firstName = firstNameTextField.getText() ;
-            String lastName = lastNameTextField.getText() ;
-            int day = Integer.parseInt(dayTextField.getText()) ;
-            int month = Integer.parseInt(monthTextField.getText()) ;
-            int year = Integer.parseInt(yearTextField.getText()) ;
-             BirthDate bd = new BirthDate(day, month, year);
-            Person person = new Person(firstName, lastName, bd);
+            String wibsite = websiteTextField.getText();
+            String firstName = firstNameTextField.getText();
+            String lastName = lastNameTextField.getText();
+            int day = Integer.parseInt(dayTextField.getText());
+            int month = Integer.parseInt(monthTextField.getText());
+            int year = Integer.parseInt(yearTextField.getText());
+            BirthDate bd = new BirthDate(day, month, year);
+            Person person = new Person(firstName, lastName, bd, country, city, email, postalCode, telephone);
             Bussinesses bussinesses = new Bussinesses(title, gener, wibsite, person);
             adresses.add(bussinesses);
-             firstNameTextField.setText("");
+            firstNameTextField.setText("");
             lastNameTextField.setText("");
             dayTextField.setText("");
             monthTextField.setText("");
@@ -489,15 +554,41 @@ public class Dataadressbook extends javax.swing.JFrame {
             cityComboBox.setSelectedIndex(0);
             postalCodeTexField.setText("");
             emailTextField.setText("");
-            telephoneNumberTExtField.setText("");  
+            telephoneNumberTExtField.setText("");
             titleTextField.setText("");
             generTextField.setText("");
             websiteTextField.setText("");
-            
-            
-            
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void firstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_firstNameTextFieldActionPerformed
+
+    private void searchAboutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchAboutKeyPressed
+        // TODO add your handling code here:
+        String searchParams = searchAbout.getText() ;
+        ArrayList <Data> searchResults = new ArrayList<>() ;
+        for (Data d : adresses) {
+            if (d instanceof Person) {
+                Person p = (Person) d ;
+                if (p.compareBy(searchParams))
+                    searchResults.add(p) ;
+            }
+            if (d instanceof Bussinesses) {
+                Bussinesses b = (Bussinesses) d ;
+                if (b.compareBy(searchParams))
+                    searchResults.add(b) ;
+            }
+        }
+        String[] searchResultsList = new String[searchResults.size()] ;
+        for (int i = 0; i < searchResults.size(); i++) {
+            searchResultsList[i] = searchResults.get(i).toString() ;
+        }
+        searchRes.setListData(searchResultsList);
+        
+    }//GEN-LAST:event_searchAboutKeyPressed
 
     /**
      * @param args the command line arguments
@@ -541,6 +632,7 @@ public class Dataadressbook extends javax.swing.JFrame {
     private javax.swing.ButtonGroup adressButtonGroup;
     private javax.swing.JLabel birthdayl;
     private javax.swing.JRadioButton businessRadioButton;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cityComboBox;
     private javax.swing.JComboBox<String> countryComboBox;
     private javax.swing.JTextField dayTextField;
@@ -552,7 +644,10 @@ public class Dataadressbook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lTelephone;
@@ -568,6 +663,8 @@ public class Dataadressbook extends javax.swing.JFrame {
     private javax.swing.JRadioButton personRadioButton;
     private javax.swing.JTextField postalCodeTexField;
     private javax.swing.JPanel search;
+    private javax.swing.JTextField searchAbout;
+    private javax.swing.JList<String> searchRes;
     private javax.swing.JTextField telephoneNumberTExtField;
     private javax.swing.JTextField titleTextField;
     private javax.swing.JTextField websiteTextField;

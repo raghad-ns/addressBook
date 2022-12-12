@@ -16,7 +16,10 @@ public class Person extends Data implements Compare {
     public Person() {
     }
  
-    public Person(String firstName, String lastName, BirthDate bd) {
+
+
+    public Person(String firstName, String lastName, BirthDate bd, String countrt, String city, String email, String postsal, String telNum) {
+        super(countrt, city, email, postsal, telNum);
         this.firstName = firstName;
         this.lastName = lastName;
         this.bd = bd;
@@ -61,14 +64,14 @@ public class Person extends Data implements Compare {
             String lastNameTest = name.substring(name.indexOf(' ')) ;
             
             dual = (
-                this.firstName.toLowerCase().trim().contains(firstNameTest.toLowerCase()) || 
-                this.lastName.toLowerCase().trim().contains(lastNameTest.toLowerCase())
+                this.firstName.toLowerCase().trim().startsWith(firstNameTest.toLowerCase()) || 
+                this.lastName.toLowerCase().trim().startsWith(lastNameTest.toLowerCase())
                 );
         }
         
         return (
-            this.firstName.toLowerCase().trim().contains(name.toLowerCase()) || 
-            this.lastName.toLowerCase().trim().contains(name.toLowerCase()) || 
+            this.firstName.toLowerCase().trim().startsWith(name.toLowerCase()) || 
+            this.lastName.toLowerCase().trim().startsWith(name.toLowerCase()) || 
             dual
             );
         

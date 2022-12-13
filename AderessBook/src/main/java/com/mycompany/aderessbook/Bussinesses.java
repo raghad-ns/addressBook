@@ -58,7 +58,7 @@ public class Bussinesses extends Data implements Compare {
     
     @Override
     public boolean compareBy (String title) {
-        return this.Title.toLowerCase().startsWith(title.toLowerCase()) ;
+        return (this.Title.toLowerCase().startsWith(title.toLowerCase()) || ContactPerson.compareBy(title)) ;
     }
     
     @Override

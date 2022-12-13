@@ -88,10 +88,10 @@ public class AderessBook {
                         int year = input.nextInt();
                         BirthDate bd = new BirthDate(day, month, year);
 
-                        Person tempPerson = new Person(firstName, lastName, bd);
+//                        Person tempPerson = new Person(firstName, lastName, bd, Genre, Title, Genre, lastName, )
 
-                        Bussinesses tempBussenis = new Bussinesses(Title, Genre, Wibsite, tempPerson);
-                        bussinesses.add(tempBussenis);
+//                        Bussinesses tempBussenis = new Bussinesses(Title, Genre, Wibsite, tempPerson);
+//                        bussinesses.add(tempBussenis);
                     }
                     break;
                 }

@@ -55,25 +55,22 @@ public class Person extends Data implements Compare {
     
      @Override
     public boolean compareBy (String name) {
-        
-        boolean dual = false ;
-        
-        if (name.trim().contains(" ")) {
-            
-            String firstNameTest = name.substring(0, name.indexOf(' ')) ;
-            String lastNameTest = name.substring(name.indexOf(' ')) ;
-            
-            dual = (
-                this.firstName.toLowerCase().trim().startsWith(firstNameTest.toLowerCase()) || 
-                this.lastName.toLowerCase().trim().startsWith(lastNameTest.toLowerCase())
+            boolean dual = false ;
+            if (name.trim().contains(" ")) {
+
+                String firstNameTest = name.substring(0, name.indexOf(' ')) ;
+                String lastNameTest = name.substring(name.indexOf(' ')) ;
+
+                dual = (
+                    this.firstName.toLowerCase().trim().startsWith(firstNameTest.toLowerCase()) || 
+                    this.lastName.toLowerCase().trim().startsWith(lastNameTest.toLowerCase())
+                    );
+            }
+            return (
+                this.firstName.toLowerCase().trim().startsWith(name.toLowerCase()) || 
+                this.lastName.toLowerCase().trim().startsWith(name.toLowerCase()) || 
+                dual
                 );
-        }
-        
-        return (
-            this.firstName.toLowerCase().trim().startsWith(name.toLowerCase()) || 
-            this.lastName.toLowerCase().trim().startsWith(name.toLowerCase()) || 
-            dual
-            );
         
     }
     

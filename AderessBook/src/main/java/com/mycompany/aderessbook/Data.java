@@ -11,7 +11,7 @@ public class Data {
     Data () {
     // intialize
     }
-    Data (String countrt , String city , String email , String postsal , String telNum) {
+    Data (String country , String city , String email , String postsal , String telNum) {
         this.country = country ;
         this.city = city ;
         this.email = email ;
@@ -56,6 +56,6 @@ public class Data {
     //must be completed as soon as posible
 
     public String getInfo () {
-        return ("email : " +  this.email + " telephone number: " + this.telNum + "country : " + this.country + " city : " + this.city + " postal code: " + this.postal + '\n') ;
+        return ("\nemail : " +  this.email + "\ntelephone number: " + this.telNum + "\ncountry : " + this.country + "\ncity : " + this.city + "\npostal code: " + this.postal) ;
     }
 }

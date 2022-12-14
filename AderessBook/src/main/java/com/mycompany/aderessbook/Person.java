@@ -76,8 +76,8 @@ public class Person extends Data implements Compare {
     
     @Override
     public String getInfo() {
-        return "Person Name : " + firstName + " " + lastName + '\n' 
-                + bd.getInfo() + '\n' + super.getInfo() ;
+        return "\nPerson Name : " + firstName + " " + lastName + "\nBirth Date" 
+                + bd.getInfo() + super.getInfo() ;
     }
     
 }

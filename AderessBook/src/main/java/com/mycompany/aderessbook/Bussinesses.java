@@ -66,11 +66,10 @@ public class Bussinesses extends Data implements Compare {
 
         return 
                 "The Title is : " +
-                this.Title + "The Genre: " +
-                this.Genre + "The Wibsite : " + 
-                this.Wibsite + "ContactPerson : " +
-                this.ContactPerson + 
-                '\n' +super.getInfo() ;
+                this.Title + "\nThe Genre: " +
+                this.Genre + "\nThe Wibsite : " + 
+                this.Wibsite + "\nContactPerson : " +
+                this.ContactPerson.getInfo() ;
 
     }
 

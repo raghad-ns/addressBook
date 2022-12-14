@@ -36,6 +36,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Address Book"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -161,8 +162,8 @@
         <Container class="javax.swing.JPanel" name="person">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="&#x650;Adress Form">
-                <Property name="tabTitle" type="java.lang.String" value="&#x650;Adress Form"/>
+              <JTabbedPaneConstraints tabName="Add Address">
+                <Property name="tabTitle" type="java.lang.String" value="Add Address"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -213,10 +214,15 @@
                                                       <Component id="monthTextField" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
                                                       <Component id="lmonth" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lyear" min="-2" pref="37" max="-2" attributes="0"/>
-                                                      <Component id="yearTextField" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="102" attributes="0">
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                          <Component id="lyear" min="-2" pref="37" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" attributes="0">
+                                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                                          <Component id="yearTextField" min="-2" pref="64" max="-2" attributes="0"/>
+                                                      </Group>
                                                   </Group>
                                               </Group>
                                               <Component id="countryComboBox" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>

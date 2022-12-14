@@ -68,8 +68,9 @@ public class Bussinesses extends Data implements Compare {
                 "Bussiness Information : \nThe Title is : " +
                 this.Title + "\nThe Genre: " +
                 this.Genre + "\nThe Wibsite : " + 
-                this.Wibsite + "\nContactPerson : " +
-                this.ContactPerson.getInfo() ;
+                this.Wibsite + "\nContact " +
+                this.ContactPerson.getInfo() + 
+                super.getInfo();
 
     }
     @Override
@@ -77,7 +78,8 @@ public class Bussinesses extends Data implements Compare {
         return  this.Title + ":" +
                 this.Genre + ":" + 
                 this.Wibsite + ":" +
-                this.ContactPerson.fileFormat();
+                this.ContactPerson.fileFormat() + ":" +
+                super.fileFormat();
     }
 
 }

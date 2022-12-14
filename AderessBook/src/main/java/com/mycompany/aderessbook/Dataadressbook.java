@@ -21,9 +21,41 @@ public class Dataadressbook extends javax.swing.JFrame {
     public Dataadressbook() {
         initComponents();
     }
-
-    public void display() {
-
+    public void isEmptyTextField() throws EmptyTextFieldException{
+       
+        if (((businessRadioButton.isSelected())&&(titleTextField.getText().isEmpty()|| generTextField.getText().isEmpty()||
+                websiteTextField.getText().isEmpty())) || (firstNameTextField.getText().isEmpty()||
+                lastNameTextField.getText().isEmpty()|| dayTextField.getText().isEmpty()||
+                monthTextField.getText().isEmpty()||   yearTextField.getText().isEmpty()||
+                countryComboBox.getSelectedItem() == "Country"||cityComboBox.getSelectedItem() == "City"||
+                 postalCodeTexField.getText().isEmpty()|| emailTextField.getText().isEmpty()||
+                telephoneNumberTExtField.getText().isEmpty())) {
+              
+        }
+        else {
+             throw new EmptyTextFieldException(
+                 "Please Fill All Information"
+             );
+        }
+    }    
+    public String emailChecked(String email) throws invalidEmailFormatException {
+         if((email.endsWith(".com")) && (email.contains("@"))) {
+              return email;
+        } else {
+             throw new invalidEmailFormatException(
+                 "Email Must Contain (@) and Ends with (.com)"
+             );
+         }
+    }
+   
+    public String postalCodeChecked(String postalCode) throws invalidPostalCodException {
+         if(postalCode.length() == 4) {
+              return postalCode;
+        } else {
+             throw new invalidPostalCodException(
+                 "Postal code must be 4 digit"
+             );
+         }
     }
 
     /**
@@ -465,7 +497,8 @@ public class Dataadressbook extends javax.swing.JFrame {
         yearTextField.setEnabled(businessRadioButton.isSelected());
 
     }//GEN-LAST:event_businessRadioButtonActionPerformed
-
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
@@ -478,10 +511,13 @@ public class Dataadressbook extends javax.swing.JFrame {
                 String country = countryComboBox.getSelectedItem().toString();
                 String city = cityComboBox.getSelectedItem().toString();
                 String postalCode = postalCodeTexField.getText();
+                postalCode = postalCodeChecked(postalCode);
                 String email = emailTextField.getText();
+                email = emailChecked(email);
                 String telephone = telephoneNumberTExtField.getText();
                 BirthDate bd = new BirthDate(day, month, year);
                 Person person = new Person(firstName, lastName, bd, country, city, email, postalCode, telephone);
+               isEmptyTextField();
                 adresses.add(person);
                 firstNameTextField.setText("");
                 lastNameTextField.setText("");
@@ -492,13 +528,16 @@ public class Dataadressbook extends javax.swing.JFrame {
                 cityComboBox.setSelectedIndex(0);
                 postalCodeTexField.setText("");
                 emailTextField.setText("");
-                telephoneNumberTExtField.setText("");
+                telephoneNumberTExtField.setText("");   
+              
 
             } else {
                 String country = countryComboBox.getSelectedItem().toString();
                 String city = cityComboBox.getSelectedItem().toString();
                 String postalCode = postalCodeTexField.getText();
+                postalCode = postalCodeChecked(postalCode);
                 String email = emailTextField.getText();
+                email = emailChecked(email);
                 String telephone = telephoneNumberTExtField.getText();
                 String title = titleTextField.getText();
                 String gener = generTextField.getText();
@@ -511,6 +550,7 @@ public class Dataadressbook extends javax.swing.JFrame {
                 BirthDate bd = new BirthDate(day, month, year);
                 Person person = new Person(firstName, lastName, bd, country, city, email, postalCode, telephone);
                 Bussinesses bussinesses = new Bussinesses(title, gener, wibsite, person);
+                isEmptyTextField();
                 adresses.add(bussinesses);
                 firstNameTextField.setText("");
                 lastNameTextField.setText("");
@@ -525,8 +565,17 @@ public class Dataadressbook extends javax.swing.JFrame {
                 titleTextField.setText("");
                 generTextField.setText("");
                 websiteTextField.setText("");
-
+              
             }
+        }
+        catch (EmptyTextFieldException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+        catch (invalidEmailFormatException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+        catch(invalidPostalCodException ex) {
+             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
         catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "invalid number format , couldn't add this address");

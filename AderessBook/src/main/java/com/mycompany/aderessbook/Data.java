@@ -56,6 +56,12 @@ public class Data {
     //must be completed as soon as posible
 
     public String getInfo () {
-        return ("\nemail : " +  this.email + "\ntelephone number: " + this.telNum + "\ncountry : " + this.country + "\ncity : " + this.city + "\npostal code: " + this.postal) ;
+        return ("\nemail : " +  this.email + "\ntelephone number: " + this.telNum + "\ncountry : " 
+                + this.country + "\ncity : " + this.city + "\npostal code: " + this.postal +
+                "\n------------------------") ;
+    }
+    public String fileFormat() {
+         return (  this.email + ":" + this.telNum + ":" 
+                + this.country + ":" + this.city + ":" + this.postal  ) ;
     }
 }

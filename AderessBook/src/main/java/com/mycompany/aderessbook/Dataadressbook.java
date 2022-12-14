@@ -4,8 +4,16 @@
  */
 package com.mycompany.aderessbook;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import static javax.swing.text.html.HTML.Tag.OPTION;
 
 /**
  *
@@ -23,12 +31,12 @@ public class Dataadressbook extends javax.swing.JFrame {
     }
     public void isEmptyTextField() throws EmptyTextFieldException{
        
-        if (((businessRadioButton.isSelected())&&(titleTextField.getText().isEmpty()|| generTextField.getText().isEmpty()||
+       if (!((businessRadioButton.isSelected() && (titleTextField.getText().isEmpty()|| generTextField.getText().isEmpty()||
                 websiteTextField.getText().isEmpty())) || (firstNameTextField.getText().isEmpty()||
                 lastNameTextField.getText().isEmpty()|| dayTextField.getText().isEmpty()||
                 monthTextField.getText().isEmpty()||   yearTextField.getText().isEmpty()||
-                countryComboBox.getSelectedItem() == "Country"||cityComboBox.getSelectedItem() == "City"||
-                 postalCodeTexField.getText().isEmpty()|| emailTextField.getText().isEmpty()||
+                countryComboBox.getSelectedItem() == "Country"||cityComboBox.getSelectedItem() == "City") || 
+		postalCodeTexField.getText().isEmpty()|| emailTextField.getText().isEmpty()||
                 telephoneNumberTExtField.getText().isEmpty())) {
               
         }
@@ -119,6 +127,10 @@ public class Dataadressbook extends javax.swing.JFrame {
         bpostalCodeTexField1 = new javax.swing.JTextField();
         bcityComboBox1 = new javax.swing.JComboBox<>();
         contactPersonDatajLabel = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        saveMenuItem = new javax.swing.JMenuItem();
+        OpenMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -499,9 +511,9 @@ public class Dataadressbook extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
-                        .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lcity1)
-                            .addComponent(bcityComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bcityComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lcity1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)))
                 .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(personLayout.createSequentialGroup()
@@ -543,6 +555,28 @@ public class Dataadressbook extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("ِAdress Form", person);
+
+        jMenu2.setText("Edit");
+
+        saveMenuItem.setText("Save");
+        saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(saveMenuItem);
+
+        OpenMenuItem.setText("Open");
+        OpenMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpenMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(OpenMenuItem);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -635,7 +669,7 @@ public class Dataadressbook extends javax.swing.JFrame {
                 String telephone = telephoneNumberTExtField.getText();
                 BirthDate bd = new BirthDate(day, month, year);
                 Person person = new Person(firstName, lastName, bd, country, city, email, postalCode, telephone);
-               isEmptyTextField();
+                isEmptyTextField();
                 adresses.add(person);
                 firstNameTextField.setText("");
                 lastNameTextField.setText("");
@@ -784,9 +818,79 @@ public class Dataadressbook extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bcityComboBox1ItemStateChanged
 
-    /**
-     * @param args the command line arguments
-     */
+    private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
+        // TODO add your handling code here:
+        File file = null;
+        JFileChooser chooser = new JFileChooser(file);
+        int returnVal = chooser.showSaveDialog(this);
+        
+        if (returnVal == JFileChooser.APPROVE_OPTION)
+            file = chooser.getSelectedFile();
+        try{
+        PrintWriter printWriter = new PrintWriter (file);
+        for (int i = 0; i < adresses.size(); i++) {
+                String str = adresses.get(i).fileFormat();
+                printWriter.println(str); 
+        }
+        printWriter.close();
+        }catch(FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            
+        } catch (Exception ex) {
+         JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_saveMenuItemActionPerformed
+
+    private void OpenMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenMenuItemActionPerformed
+        // TODO add your handling code here:
+        File file = null;
+        JFileChooser chooser = new JFileChooser();
+        int returnVal= chooser.showOpenDialog (this);
+        if (returnVal == JFileChooser.APPROVE_OPTION)
+         file = chooser.getSelectedFile();
+        Scanner scn;
+        try{
+        scn = new Scanner (file);
+        while (scn.hasNext()) {
+        String line = scn.nextLine();
+        String[] data = line.split(":");
+        if(data.length < 10) {
+        Person p = new Person();
+        
+            p.setFirst(data[0].substring(0 , data[0].indexOf(" ")));
+            p.setLast(data[0].substring(data[0].indexOf(" ")));
+            p.setBirthDate(new BirthDate());
+            p.getBirthDate().setDay(Integer.parseInt(data[1]));
+            p.getBirthDate().setMonth(Integer.parseInt(data[2]));
+            p.getBirthDate().setYear(Integer.parseInt(data[3]));
+            p.setEmail(data[4]);
+            p.setTelNum(data[5]);
+            p.setCountry(data[6]);
+            p.setCity(data[7]);
+            p.setPostal(data[8]);
+            adresses.add(p);
+        }
+            
+        }
+       
+        
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+         catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+
+
+
+
+
+
+    }//GEN-LAST:event_OpenMenuItemActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -823,6 +927,7 @@ public class Dataadressbook extends javax.swing.JFrame {
     private javax.swing.JLabel Lday;
     private javax.swing.JLabel LfirstName;
     private javax.swing.JLabel LlastName1;
+    private javax.swing.JMenuItem OpenMenuItem;
     private javax.swing.ButtonGroup adressButtonGroup;
     private javax.swing.JComboBox<String> bcityComboBox1;
     private javax.swing.JComboBox<String> bcountryComboBox1;
@@ -844,6 +949,8 @@ public class Dataadressbook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
@@ -865,6 +972,7 @@ public class Dataadressbook extends javax.swing.JFrame {
     private javax.swing.JPanel person;
     private javax.swing.JRadioButton personRadioButton;
     private javax.swing.JTextField postalCodeTexField;
+    private javax.swing.JMenuItem saveMenuItem;
     private javax.swing.JPanel search;
     private javax.swing.JTextField searchAbout;
     private javax.swing.JList<String> searchRes;

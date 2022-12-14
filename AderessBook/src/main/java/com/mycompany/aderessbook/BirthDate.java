@@ -63,8 +63,9 @@ public class BirthDate {
   
               String date = "{ " + arr[month - 1] + " " + day + " , "  + year + "}";
               return date;
-        
-      
+    }
+    public String fileFormat() {
+        return getDay() +":" + getMonth() +":" +getYear()+":";
     }
 
     ////// getAge

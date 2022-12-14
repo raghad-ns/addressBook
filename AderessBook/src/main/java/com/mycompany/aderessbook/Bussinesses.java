@@ -65,12 +65,19 @@ public class Bussinesses extends Data implements Compare {
     public String getInfo(){
 
         return 
-                "The Title is : " +
+                "Bussiness Information : \nThe Title is : " +
                 this.Title + "\nThe Genre: " +
                 this.Genre + "\nThe Wibsite : " + 
                 this.Wibsite + "\nContactPerson : " +
                 this.ContactPerson.getInfo() ;
 
+    }
+    @Override
+    public String fileFormat() {
+        return  this.Title + ":" +
+                this.Genre + ":" + 
+                this.Wibsite + ":" +
+                this.ContactPerson.fileFormat();
     }
 
 }

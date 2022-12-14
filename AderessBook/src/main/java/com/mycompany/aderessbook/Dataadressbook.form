@@ -10,7 +10,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="saveMenuItem">
@@ -288,8 +288,8 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lemail" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="contactPersonDatajLabel" min="-2" pref="169" max="-2" attributes="0"/>
                                   <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="contactPersonDatajLabel" alignment="0" min="-2" pref="252" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -791,7 +791,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="contactPersonDatajLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Contact person data :"/>
+                <Property name="text" type="java.lang.String" value="Contact person&apos;s data :"/>
               </Properties>
             </Component>
           </SubComponents>

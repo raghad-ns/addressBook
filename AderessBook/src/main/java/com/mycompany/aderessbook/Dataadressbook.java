@@ -28,6 +28,7 @@ public class Dataadressbook extends javax.swing.JFrame {
 //     */
     public Dataadressbook() {
         initComponents();
+        contactPersonDatajLabel.setVisible(!personRadioButton.isSelected());
     }
     public void isEmptyTextField() throws EmptyTextFieldException{
        
@@ -350,7 +351,7 @@ public class Dataadressbook extends javax.swing.JFrame {
             }
         });
 
-        contactPersonDatajLabel.setText("Contact person data :");
+        contactPersonDatajLabel.setText("Contact person's data :");
 
         javax.swing.GroupLayout personLayout = new javax.swing.GroupLayout(person);
         person.setLayout(personLayout);
@@ -446,8 +447,8 @@ public class Dataadressbook extends javax.swing.JFrame {
                     .addGroup(personLayout.createSequentialGroup()
                         .addGroup(personLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lemail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contactPersonDatajLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contactPersonDatajLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         personLayout.setVerticalGroup(
@@ -556,7 +557,7 @@ public class Dataadressbook extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("ِAdress Form", person);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("File");
 
         saveMenuItem.setText("Save");
         saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -615,7 +616,12 @@ public class Dataadressbook extends javax.swing.JFrame {
 
     private void personRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personRadioButtonActionPerformed
         // TODO add your handling code here:
-
+        contactPersonDatajLabel.setVisible(!personRadioButton.isSelected());
+        bcountryComboBox1.setEnabled(businessRadioButton.isSelected());
+        bcityComboBox1.setEnabled(businessRadioButton.isSelected());
+        bemailTextField1.setEnabled(businessRadioButton.isSelected());
+        bpostalCodeTexField1.setEnabled(businessRadioButton.isSelected());
+        btelephoneNumberTExtField1.setEnabled(businessRadioButton.isSelected());
         firstNameTextField.setEnabled(personRadioButton.isSelected());
         lastNameTextField.setEnabled(personRadioButton.isSelected());
         dayTextField.setEnabled(personRadioButton.isSelected());
@@ -633,7 +639,7 @@ public class Dataadressbook extends javax.swing.JFrame {
 
     private void businessRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_businessRadioButtonActionPerformed
         // TODO add your handling code here:
-
+        contactPersonDatajLabel.setVisible(businessRadioButton.isSelected());
         titleTextField.setEnabled(businessRadioButton.isSelected());
         generTextField.setEnabled(businessRadioButton.isSelected());
         websiteTextField.setEnabled(businessRadioButton.isSelected());
@@ -643,6 +649,11 @@ public class Dataadressbook extends javax.swing.JFrame {
         postalCodeTexField.setEnabled(businessRadioButton.isSelected());
         telephoneNumberTExtField.setEnabled(businessRadioButton.isSelected());
         firstNameTextField.setEnabled(businessRadioButton.isSelected());
+        bcountryComboBox1.setEnabled(businessRadioButton.isSelected());
+        bcityComboBox1.setEnabled(businessRadioButton.isSelected());
+        bemailTextField1.setEnabled(businessRadioButton.isSelected());
+        bpostalCodeTexField1.setEnabled(businessRadioButton.isSelected());
+        btelephoneNumberTExtField1.setEnabled(businessRadioButton.isSelected());
         lastNameTextField.setEnabled(businessRadioButton.isSelected());
         dayTextField.setEnabled(businessRadioButton.isSelected());
         monthTextField.setEnabled(businessRadioButton.isSelected());
@@ -691,6 +702,13 @@ public class Dataadressbook extends javax.swing.JFrame {
                 String email = emailTextField.getText();
                 email = emailChecked(email);
                 String telephone = telephoneNumberTExtField.getText();
+                String bcountry = countryComboBox.getSelectedItem().toString();
+                String bcity = cityComboBox.getSelectedItem().toString();
+                String bpostalCode = postalCodeTexField.getText();
+                bpostalCode = postalCodeChecked(bpostalCode);
+                String bemail = emailTextField.getText();
+                bemail = emailChecked(bemail);
+                String btelephone = telephoneNumberTExtField.getText();
                 String title = titleTextField.getText();
                 String gener = generTextField.getText();
                 String wibsite = websiteTextField.getText();
@@ -701,7 +719,7 @@ public class Dataadressbook extends javax.swing.JFrame {
                 int year = Integer.parseInt(yearTextField.getText());
                 BirthDate bd = new BirthDate(day, month, year);
                 Person person = new Person(firstName, lastName, bd, country, city, email, postalCode, telephone);
-                Bussinesses bussinesses = new Bussinesses(title, gener, wibsite, person);
+                Bussinesses bussinesses = new Bussinesses(title, gener, wibsite, person, bcountry, bcity, bemail, bpostalCode, btelephone);
                 isEmptyTextField();
                 adresses.add(bussinesses);
                 firstNameTextField.setText("");
@@ -880,13 +898,6 @@ public class Dataadressbook extends javax.swing.JFrame {
          catch (Exception e) {
         JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-
-
-
-
-
-
 
     }//GEN-LAST:event_OpenMenuItemActionPerformed
 

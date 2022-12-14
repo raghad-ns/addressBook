@@ -8,19 +8,19 @@ public class Bussinesses extends Data implements Compare {
     private String Genre;
     private String Wibsite;
     private Person ContactPerson;
-    
-    ///getter
-   
-    public Bussinesses( ) {
-    }
 
-    public Bussinesses(String Title, String Genre, String Wibsite, Person ContactPerson) {
+    public Bussinesses(String Title, String Genre, String Wibsite, Person ContactPerson, String country, String city, String email, String postsal, String telNum) {
+        super(country, city, email, postsal, telNum);
         this.Title = Title;
         this.Genre = Genre;
         this.Wibsite = Wibsite;
         this.ContactPerson = ContactPerson;
     }
     
+    ///getter
+   
+    public Bussinesses( ) {
+    }
 
     public String getTitle() {
         return Title;

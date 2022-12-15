@@ -30,6 +30,41 @@ public class AderessBook extends javax.swing.JFrame {
         initComponents();
         contactPersonDatajLabel.setVisible(!personRadioButton.isSelected());
     }
+    public void search () {
+        String[] empty = new String[0];
+        searchRes.setListData(empty);
+        String searchParams = searchAbout.getText();
+        System.out.println(searchParams);
+        ArrayList<Data> searchResults = new ArrayList<>();
+        for (Data d : adresses) {
+            if (d instanceof Person) {
+                Person p = (Person) d;
+                if (p.compareBy(searchParams)) {
+                    searchResults.add(p);
+                }
+            }
+            if (d instanceof Bussinesses) {
+                Bussinesses b = (Bussinesses) d;
+                if (b.compareBy(searchParams)) {
+                    searchResults.add(b);
+                }
+            }
+        }
+        String[] searchResultsList = new String[searchResults.size()];
+        for (int i = 0; i < searchResults.size(); i++) {
+            if (searchResults.get(i) instanceof Person) {
+                Person p = (Person) searchResults.get(i);
+                searchResultsList[i] = p.getFirst() + ' ' + p.getLast();
+            }
+            if (searchResults.get(i) instanceof Bussinesses) {
+                Bussinesses b = (Bussinesses) searchResults.get(i);
+                searchResultsList[i] = b.getTitle();
+            }
+        }
+        System.out.println(searchResults.size());
+        searchRes.setListData(searchResultsList);
+
+    }
 
     public void isEmptyTextField() throws EmptyTextFieldException {
 
@@ -697,6 +732,7 @@ public class AderessBook extends javax.swing.JFrame {
                 postalCodeTexField.setText("");
                 emailTextField.setText("");
                 telephoneNumberTExtField.setText("");
+                search();
 
             } else {
                 String country = countryComboBox.getSelectedItem().toString();
@@ -744,7 +780,7 @@ public class AderessBook extends javax.swing.JFrame {
                 bpostalCodeTexField1.setText("");
                 bemailTextField1.setText("");
                 btelephoneNumberTExtField1.setText("");
-
+                search();
             }
         } catch (EmptyTextFieldException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -766,39 +802,39 @@ public class AderessBook extends javax.swing.JFrame {
 
     private void searchAboutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchAboutKeyPressed
         // TODO add your handling code here:
-        String[] empty = new String[0];
-        searchRes.setListData(empty);
-        String searchParams = searchAbout.getText();
-        System.out.println(searchParams);
-        ArrayList<Data> searchResults = new ArrayList<>();
-        for (Data d : adresses) {
-            if (d instanceof Person) {
-                Person p = (Person) d;
-                if (p.compareBy(searchParams)) {
-                    searchResults.add(p);
-                }
-            }
-            if (d instanceof Bussinesses) {
-                Bussinesses b = (Bussinesses) d;
-                if (b.compareBy(searchParams)) {
-                    searchResults.add(b);
-                }
-            }
-        }
-        String[] searchResultsList = new String[searchResults.size()];
-        for (int i = 0; i < searchResults.size(); i++) {
-            if (searchResults.get(i) instanceof Person) {
-                Person p = (Person) searchResults.get(i);
-                searchResultsList[i] = p.getFirst() + ' ' + p.getLast();
-            }
-            if (searchResults.get(i) instanceof Bussinesses) {
-                Bussinesses b = (Bussinesses) searchResults.get(i);
-                searchResultsList[i] = b.getTitle();
-            }
-        }
-        System.out.println(searchResults.size());
-        searchRes.setListData(searchResultsList);
-
+//        String[] empty = new String[0];
+//        searchRes.setListData(empty);
+//        String searchParams = searchAbout.getText();
+//        System.out.println(searchParams);
+//        ArrayList<Data> searchResults = new ArrayList<>();
+//        for (Data d : adresses) {
+//            if (d instanceof Person) {
+//                Person p = (Person) d;
+//                if (p.compareBy(searchParams)) {
+//                    searchResults.add(p);
+//                }
+//            }
+//            if (d instanceof Bussinesses) {
+//                Bussinesses b = (Bussinesses) d;
+//                if (b.compareBy(searchParams)) {
+//                    searchResults.add(b);
+//                }
+//            }
+//        }
+//        String[] searchResultsList = new String[searchResults.size()];
+//        for (int i = 0; i < searchResults.size(); i++) {
+//            if (searchResults.get(i) instanceof Person) {
+//                Person p = (Person) searchResults.get(i);
+//                searchResultsList[i] = p.getFirst() + ' ' + p.getLast();
+//            }
+//            if (searchResults.get(i) instanceof Bussinesses) {
+//                Bussinesses b = (Bussinesses) searchResults.get(i);
+//                searchResultsList[i] = b.getTitle();
+//            }
+//        }
+//        System.out.println(searchResults.size());
+//        searchRes.setListData(searchResultsList);
+        search();
     }//GEN-LAST:event_searchAboutKeyPressed
 
     private void searchAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAboutActionPerformed
@@ -920,6 +956,7 @@ public class AderessBook extends javax.swing.JFrame {
                     b.setPostal(data[16]);
                     adresses.add(b);
                 }
+                search();
 
             }
 
